@@ -453,7 +453,10 @@ export class Store {
         const rootPath = rootUrl.replace(/^[a-z]+:\/\/[^/]+\/*/gi, '');
         const storeName = this.getName();
         path = String(path).replace(/\/$/, '').trim();
-        return encodeURI(`${rootPath}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+        
+        // remove root path
+        //return encodeURI(`${rootPath}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+        return encodeURI(`/${UploadFS.config.storesPath}/${storeName}/${path}`);
     }
 
     /**
@@ -465,7 +468,10 @@ export class Store {
         const rootUrl = Meteor.absoluteUrl().replace(/\/+$/, '');
         const storeName = this.getName();
         path = String(path).replace(/\/$/, '').trim();
-        return encodeURI(`${rootUrl}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+
+        // remove root path
+        //return encodeURI(`${rootUrl}/${UploadFS.config.storesPath}/${storeName}/${path}`);
+        return encodeURI(`/${UploadFS.config.storesPath}/${storeName}/${path}`);
     }
 
     /**
